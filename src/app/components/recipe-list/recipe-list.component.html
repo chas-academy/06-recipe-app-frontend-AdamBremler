@@ -1,3 +1,5 @@
 <ul>
-    <li *ngFor="let recipe of recipes">{{ recipe }}</li>
+    <li *ngFor="let recipe of recipes">
+        <app-recipe-list-item [recipe]="recipe"></app-recipe-list-item>
+    </li>
 </ul>
