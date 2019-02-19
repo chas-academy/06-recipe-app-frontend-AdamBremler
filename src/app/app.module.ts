@@ -5,10 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RecipeListComponent } from './components/recipe-list/recipe-list.component';
+import { RecipeListItemComponent } from './components/recipe-list-item/recipe-list-item.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RecipeListComponent,
+    RecipeListItemComponent
   ],
   imports: [
     BrowserModule,
