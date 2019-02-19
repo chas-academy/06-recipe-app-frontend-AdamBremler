@@ -1,5 +1,5 @@
-<ul>
-    <li *ngFor="let recipe of recipes">
+<div [ngClass]="'list-group'">
+    <a *ngFor="let recipe of recipes" [routerLink]="" [ngClass]="'list-group-item list-group-item-action'">
         <app-recipe-list-item [recipe]="recipe"></app-recipe-list-item>
-    </li>
-</ul>
+    </a>
+</div>

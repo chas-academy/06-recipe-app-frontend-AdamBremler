@@ -1,3 +1,8 @@
-<app-recipe-list></app-recipe-list>
+<header [ngClass]="'jumbotron'">
+    <h1>{{ appName }}</h1>
+</header>
+<main [ngClass]="'container'">
+    <app-recipe-list></app-recipe-list>
+</main>
 
 <router-outlet></router-outlet>
