@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../../models/recipe';
+import { RecipeService } from '../../services/recipe.service';
 
 @Component({
     selector: 'app-recipe-list',
@@ -9,23 +10,25 @@ import { Recipe } from '../../models/recipe';
 export class RecipeListComponent implements OnInit {
     recipes: Recipe[];
 
-    constructor() { }
+    constructor(private recipeService: RecipeService) { }
 
     ngOnInit() {
-        this.recipes = [
-            {
-                id: 1,
-                title: 'Recept 1'
-            },
-            {
-                id: 2,
-                title: 'Recept 2'
-            },
-            {
-                id: 3,
-                title: 'Recept 3'
-            }
-        ]
+        this.recipeService.getRecipes().subscribe(data => {
+            this.recipes = data['matches'].map(rec => {
+                return {
+                    id: rec.id,
+                    name: rec.recipeName,
+                    imageUrl: rec.smallImageUrls[0],
+                    rating: rec.rating,
+                    time: rec.totalTimeInSeconds,
+                    course: rec.attributes.course,
+                    ingredients: rec.ingredients,
+                    flavors: rec.flavors
+                }
+            });
+
+            console.log(this.recipes);
+        });
     }
 
 }

@@ -42,3 +42,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Environment
+src/environments/*
+
+# json-server
+db.json
