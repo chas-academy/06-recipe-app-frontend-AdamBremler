@@ -1,5 +1,7 @@
 <header [ngClass]="'jumbotron'">
-    <h1>{{ appName }}</h1>
+    <a routerLink="" [ngClass]="'header-link'">
+        <h1>{{ appName }}</h1>
+    </a>
 </header>
 <main [ngClass]="'container'">
     <router-outlet></router-outlet>

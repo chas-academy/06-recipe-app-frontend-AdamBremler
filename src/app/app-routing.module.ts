@@ -5,7 +5,8 @@ import { RecipeListComponent } from './components/recipe-list/recipe-list.compon
 
 const routes: Routes = [
     { path: '', component: RecipeListComponent },
-    { path: 'recipe/:id', component: RecipeDetailComponent }
+    { path: 'recipe/:id', component: RecipeDetailComponent },
+    { path: '**', redirectTo: '/' }
 ];
 
 @NgModule({
