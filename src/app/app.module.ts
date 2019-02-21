@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RecipeListComponent } from './components/recipe-list/recipe-list.component';
 import { RecipeListItemComponent } from './components/recipe-list-item/recipe-list-item.component';
+import { RecipeDetailComponent } from './components/recipe-detail/recipe-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RecipeListComponent,
-    RecipeListItemComponent
+    RecipeListItemComponent,
+    RecipeDetailComponent
   ],
   imports: [
     BrowserModule,
