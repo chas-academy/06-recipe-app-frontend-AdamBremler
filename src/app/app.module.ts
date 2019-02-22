@@ -12,21 +12,22 @@ import { RecipeDetailComponent } from './components/recipe-detail/recipe-detail.
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    RecipeListComponent,
-    RecipeListItemComponent,
-    RecipeDetailComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule,
-    HttpClientModule
-  ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        RecipeListComponent,
+        RecipeListItemComponent,
+        RecipeDetailComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        NgbModule,
+        HttpClientModule
+    ],
+    providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
