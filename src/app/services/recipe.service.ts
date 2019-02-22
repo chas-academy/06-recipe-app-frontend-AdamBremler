@@ -7,8 +7,8 @@ import { environment } from '../../environments/environment';
 })
 export class RecipeService {
 
-    baseUrl: string = environment.apiUrl;
-    idAndKey: string = environment.apiIdAndKey;
+    baseUrl: string = environment.recipeUrl;
+    idAndKey: string = environment.recipeIdAndKey;
 
     constructor(private http: HttpClient) { }
 
