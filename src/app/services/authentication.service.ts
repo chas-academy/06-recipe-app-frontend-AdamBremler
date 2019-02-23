@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
+import { User } from '../models/user';
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +14,7 @@ export class AuthenticationService {
     public currentUser: Observable<User>;
 
     constructor(private http: HttpClient) {
-        this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+        this.currentUserSubject = new BehaviorSubject<User>(localStorage.getItem('currentUser'));
         this.currentUser = this.currentUserSubject.asObservable();
     }
 
@@ -21,12 +22,13 @@ export class AuthenticationService {
         return this.currentUserSubject.value;
     }
 
-    login(username: string, password: string) {
-        return this.http.post<any>(`${environment.apiUrl}login`, { username, password })
+    login(email: string, password: string) {
+        return this.http.post<any>(`${environment.apiUrl}login`, { email, password })
             .pipe(map(user => {
-                if (user && user.token) {
-                    localStorage.setItem('currentUser', JSON.stringify(user));
-                    this.currentUserSubject.next(user);
+                if (user.success) {
+                    localStorage.setItem('currentUser', user.token);
+                    this.currentUserSubject.next(user.token);
+                    debugger;
                 }
 
                 return user;
