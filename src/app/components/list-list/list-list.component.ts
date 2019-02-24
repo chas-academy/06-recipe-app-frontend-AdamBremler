@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ListService } from 'src/app/services/list.service';
+import { List } from 'src/app/models/list';
 
 @Component({
     selector: 'app-list-list',
@@ -6,23 +8,14 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./list-list.component.scss']
 })
 export class ListListComponent implements OnInit {
-    lists: any[];
+    lists: List[];
 
-    constructor() {}
+    constructor(private listService: ListService) {}
 
     ngOnInit() {
-        this.lists = [
-            {
-                id: 1,
-                name: 'My favorites',
-                recipes: ['Simple-Skillet-Green-Beans-2352743', 'Simple-Skillet-Green-Beans-2352743']
-            },
-            {
-                id: 2,
-                name: 'My other list!!!',
-                recipes: ['Simple-Skillet-Green-Beans-2352743']
-            }
-        ]
+        this.listService.getLists().subscribe((data: List[]) => {
+            this.lists = data;
+        });
     }
 
 }

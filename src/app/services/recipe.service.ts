@@ -13,8 +13,7 @@ export class RecipeService {
     constructor(private http: HttpClient) { }
 
     getRecipes() {
-        //return this.http.get(`${this.baseUrl}recipes?${this.idAndKey}&requirePictures=true`);
-        return this.http.get(`${this.baseUrl}recipes`);
+        return this.http.get(`${this.baseUrl}recipes?${this.idAndKey}&requirePictures=true`);
     }
 
     getRecipe(id: string) {

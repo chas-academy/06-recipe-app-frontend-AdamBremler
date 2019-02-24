@@ -28,7 +28,6 @@ export class AuthenticationService {
                 if (user.success) {
                     localStorage.setItem('currentUser', user.token);
                     this.currentUserSubject.next(user.token);
-                    debugger;
                 }
 
                 return user;
