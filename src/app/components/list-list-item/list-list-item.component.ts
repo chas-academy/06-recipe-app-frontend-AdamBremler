@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ListService } from 'src/app/services/list.service';
+import { List } from 'src/app/models/list';
 
 @Component({
     selector: 'app-list-list-item',
@@ -7,11 +9,16 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ListListItemComponent implements OnInit {
 
-    @Input() list: any;
+    @Input() list: List;
 
-    constructor() { }
+    @Output() deleteBtnClicked = new EventEmitter<number>();
+
+    constructor(private listService: ListService) { }
 
     ngOnInit() {
     }
 
+    deleteList() {
+        this.deleteBtnClicked.emit(this.list.id);
+    }
 }

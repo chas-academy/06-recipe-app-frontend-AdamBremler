@@ -37,4 +37,8 @@ export class ListService {
     createList(name: string) {
         return this.http.post(`${this.baseUrl}lists`, { name });
     }
+
+    deleteList(id: number) {
+        return this.http.delete(`${this.baseUrl}lists/${id}`);
+    }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ListService } from 'src/app/services/list.service';
 import { List } from 'src/app/models/list';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 @Component({
@@ -31,7 +31,10 @@ export class ListListComponent implements OnInit {
         });
 
         this.createListForm = this.formBuilder.group({
-            name: ['', Validators.required]
+            name: new FormControl('', [
+                Validators.required,
+                Validators.maxLength(25)
+            ])
         });
     }
 
@@ -61,6 +64,14 @@ export class ListListComponent implements OnInit {
                     this.error = error;
                     this.loading = false;
                 });
+    }
+
+    deleteList(id: number) {
+        this.listService.deleteList(id).subscribe((data: any) => {
+            if(data.success) {
+                this.lists = this.lists.filter((list: List) => list.id !== id);
+            }
+        });
     }
 
 }
