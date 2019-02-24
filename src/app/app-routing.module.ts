@@ -8,12 +8,13 @@ import { ListListComponent } from './components/list-list/list-list.component';
 
 const routes: Routes = [
     // Public routes
-    { path: '', component: RecipeListComponent },
+    { path: '', redirectTo: 'recipes', pathMatch: 'full' },
+    { path: 'recipes', component: RecipeListComponent },
     { path: 'recipes/:id', component: RecipeDetailComponent },
     { path: 'login', component: LoginComponent },
 
     // Guarded routes
-    { path: 'lists', component: ListListComponent },
+    { path: 'lists', component: ListListComponent, canActivate: [AuthGuard] },
 
     // Route not found
     { path: '**', redirectTo: '/' }
