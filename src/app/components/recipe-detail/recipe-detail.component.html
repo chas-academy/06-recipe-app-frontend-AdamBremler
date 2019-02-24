@@ -1,36 +1,36 @@
-<div [ngClass]="'card'">
-    <div *ngIf="recipe" [ngClass]="'recipe-container row'">
-        <h2 [ngClass]="'title col-12'">{{ recipe.name }}</h2>
-        <section [ngClass]="'col-12 col-md-6 image-section'">
-            <span [ngClass]="'w-100'">
-                <img src="{{ recipe.imageUrl }}" alt="{{ recipe.name }}" [ngClass]="'w-100 align-middle'">
+<div ngClass="card">
+    <div *ngIf="recipe" ngClass="recipe-container row">
+        <h2 ngClass="title col-12">{{ recipe.name }}</h2>
+        <section ngClass="col-12 col-md-6 image-section">
+            <span ngClass="w-100">
+                <img src="{{ recipe.imageUrl }}" alt="{{ recipe.name }}" ngClass="w-100 align-middle">
             </span>
         </section>
-        <section [ngClass]="'col-12 col-md-6'">
-            <h3 [ngClass]="'sub-title'">Ingredients</h3>
-            <ul [ngClass]="'list-group list-group-flush'">
-                <li *ngFor="let ingredient of recipe.ingredients" [ngClass]="'list-group-item'">{{ ingredient }}</li>
+        <section ngClass="col-12 col-md-6">
+            <h3 ngClass="sub-title">Ingredients</h3>
+            <ul ngClass="list-group list-group-flush">
+                <li *ngFor="let ingredient of recipe.ingredients" ngClass="list-group-item">{{ ingredient }}</li>
             </ul>
         </section>
-        <section [ngClass]="'col-12 col-md-6'">
+        <section ngClass="col-12 col-md-6">
             <div *ngIf="(recipe.flavors | json) != '{}'">
-                <h4 [ngClass]="'sub-title'">Flavors</h4>
-                <ul [ngClass]="'list-group list-group-flush'">
-                    <li *ngFor="let flavor of flavorKeys" [ngClass]="'list-group-item'">
-                        <h5 [ngClass]="'inline-title small-title'">{{ flavor }}:</h5>
+                <h4 ngClass="sub-title">Flavors</h4>
+                <ul ngClass="list-group list-group-flush">
+                    <li *ngFor="let flavor of flavorKeys" ngClass="list-group-item">
+                        <h5 ngClass="inline-title small-title">{{ flavor }}:</h5>
                         {{ recipe.flavors[flavor] * 100 | number:'1.0-0' }} %
                     </li>
                 </ul>
             </div>
         </section>
-        <section [ngClass]="'col-12 col-md-6 misc-section'">
-            <h4 [ngClass]="'sub-title inline-title col-12'">
+        <section ngClass="col-12 col-md-6 misc-section">
+            <h4 ngClass="sub-title inline-title col-12">
                 {{ recipe.time / 60 }} minutes
             </h4>
-            <div [ngClass]="'col-12'">
-                <ngb-rating [rate]="recipe.rating" [ngClass]="'rating'"></ngb-rating>
-            </div>
             <div ngClass="col-12">
+                <ngb-rating [rate]="recipe.rating" ngClass="rating"></ngb-rating>
+            </div>
+            <div *ngIf="currentUser" ngClass="col-12">
                 <app-list-adder [activeRecipe]="recipe"></app-list-adder>
             </div>
         </section>

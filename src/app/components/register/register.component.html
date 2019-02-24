@@ -1,7 +1,14 @@
 <div ngClass="row justify-content-md-center">
     <section ngClass="col-sm-12 col-md-8 col-lg-6 col-xl-6">
-        <h2 ngClass="text-center">Login</h2>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h2 ngClass="text-center">Register</h2>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div ngClass="form-group">
+                <label for="name">Name</label>
+                <input type="text" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors, 'form-control': true }" />
+                <div *ngIf="submitted && f.name.errors" ngClass="invalid-feedback">
+                    <div *ngIf="f.name.errors.required">Name is required</div>
+                </div>
+            </div>
             <div ngClass="form-group">
                 <label for="email">Email</label>
                 <input type="text" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors, 'form-control': true }" />
@@ -17,11 +24,11 @@
                 </div>
             </div>
             <div ngClass="form-group">
-                <button [disabled]="loading" ngClass="btn btn-primary">Log in</button>
+                <button [disabled]="loading" ngClass="btn btn-primary">Register</button>
                 <img *ngIf="loading" ngClass="pl-2 loading-icon" src="assets/img/loading.gif" />
             </div>
             <small>
-                or <a routerLink="/register">Register</a>
+                or <a routerLink="/login">Log in</a>
             </small>
             <div *ngIf="error" ngClass="alert alert-danger">{{ error.error.message }}</div>
         </form>

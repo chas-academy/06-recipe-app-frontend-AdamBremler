@@ -1,25 +1,25 @@
 <article *ngIf="lists">
     <h2 ngClass="text-center">Lists</h2>
-    <div [ngClass]="'row justify-content-md-center p-3'">
-        <div [ngClass]="'list-group col-12 col-md-10 col-lg-8 p-0'">
-            <a *ngFor="let list of lists" [ngClass]="'list-group-item list-group-item-action'">
+    <div ngClass="row justify-content-md-center p-3">
+        <div ngClass="list-group col-12 col-md-10 col-lg-8 p-0">
+            <a *ngFor="let list of lists" ngClass="list-group-item list-group-item-action">
                 <app-list-list-item [list]="list" (deleteBtnClicked)="deleteList($event)"></app-list-list-item>
             </a>
-            <a [ngClass]="'list-group-item list-group-item-action'">
+            <a ngClass="list-group-item list-group-item-action">
                 <form [formGroup]="createListForm" (ngSubmit)="createListSubmit()">
-                    <div class="form-group">
+                    <div ngClass="form-group">
                         <label for="name">Name</label>
-                        <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
-                        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                        <input type="text" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors, 'form-control': true }" />
+                        <div *ngIf="submitted && f.name.errors" ngClass="invalid-feedback">
                             <div *ngIf="f.name.errors.required">Name is required</div>
                             <div *ngIf="f.name.errors.maxlength">Name is too long</div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <button [disabled]="loading" class="btn btn-primary">Create new list</button>
-                        <img *ngIf="loading" class="pl-2 loading-icon" src="assets/img/loading.gif" />
+                    <div ngClass="form-group">
+                        <button [disabled]="loading" ngClass="btn btn-primary">Create new list</button>
+                        <img *ngIf="loading" ngClass="pl-2 loading-icon" src="assets/img/loading.gif" />
                     </div>
-                    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+                    <div *ngIf="error" ngClass="alert alert-danger">{{ error }}</div>
                 </form>
             </a>
         </div>

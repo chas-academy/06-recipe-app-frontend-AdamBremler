@@ -1,9 +1,9 @@
-<article [ngClass]="'row'">
-    <a [routerLink]="list.id" [ngClass]="'col-10 item-link'">
-        <div [ngClass]="'d-flex justify-content-between'">
-            <h5 [ngClass]="''">{{ list.name }}</h5>
+<article ngClass="row">
+    <a [routerLink]="list.id" ngClass="col-10 item-link">
+        <div ngClass="d-flex justify-content-between">
+            <h5>{{ list.name }}</h5>
         </div>
-        <span [ngClass]="'badge badge-secondary tag'">{{ list.recipes.length }} recipes</span>
+        <span ngClass="badge badge-secondary tag">{{ list.recipes.length }} recipes</span>
     </a>
     <div ngClass="col-2 text-right">
         <button (click)="deleteList()" ngClass="btn btn-danger h-100">X</button>

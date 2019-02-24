@@ -13,20 +13,26 @@ export class RecipeService {
 
     constructor(private http: HttpClient) { }
 
-    getRecipes() {
-        return this.http.get(`${this.baseUrl}recipes?${this.idAndKey}&requirePictures=true`).pipe(map((data: any) => {
-            return data['matches'].map((rec: any) => {
-                return {
-                    id: rec.id,
-                    name: rec.recipeName,
-                    imageUrl: rec.smallImageUrls[0],
-                    rating: rec.rating,
-                    time: rec.totalTimeInSeconds,
-                    course: rec.attributes.course,
-                    ingredients: rec.ingredients,
-                    flavors: rec.flavors
-                }
-            });
+    getRecipes(params: string[] = []) {
+        return this.http.get(`${this.baseUrl}recipes?${this.idAndKey}&requirePictures=true&${params.join('&')}`).pipe(map((data: any) => {
+            if(data) {
+                return data['matches'].map((rec: any) => {
+                    return {
+                        id: rec.id,
+                        name: rec.recipeName,
+                        imageUrl: rec.imageUrlsBySize['90'],
+                        rating: rec.rating,
+                        time: rec.totalTimeInSeconds,
+                        course: rec.attributes.course,
+                        ingredients: rec.ingredients,
+                        flavors: rec.flavors
+                    }
+                });
+            }
+
+            else {
+                return [];
+            }
         }))
     }
 

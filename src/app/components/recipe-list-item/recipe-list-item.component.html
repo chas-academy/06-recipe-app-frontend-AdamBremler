@@ -1,14 +1,14 @@
-<article [ngClass]="'row p-3'">
-    <div [ngClass]="'col-12 col-sm-4 col-md-3 col-lg-2 col-xl-2'">
-        <img src="{{ recipe.imageUrl }}" alt="{{ recipe.name }}" [ngClass]="'w-100 recipe-img'">
+<article ngClass="row p-3">
+    <div ngClass="col-12 col-sm-4 col-md-3 col-lg-2 col-xl-2">
+        <img src="{{ recipe.imageUrl }}" alt="{{ recipe.name }}" ngClass="w-100 recipe-img">
     </div>
-    <div [ngClass]="'col-12 col-sm-8 col-md-9 col-lg-10 col-xl-10'">
-        <div [ngClass]="'d-flex justify-content-between'">
-            <h5 [ngClass]="''">{{ recipe.name }}</h5>
-            <small [ngClass]="''"><ngb-rating [rate]="recipe.rating"></ngb-rating></small>
+    <div ngClass="col-12 col-sm-8 col-md-9 col-lg-10 col-xl-10">
+        <div ngClass="d-flex justify-content-between">
+            <h5>{{ recipe.name }}</h5>
+            <small><ngb-rating [rate]="recipe.rating"></ngb-rating></small>
         </div>
-        <p [ngClass]="''">
-            <span [ngClass]="'badge badge-secondary tag'" *ngFor="let course of recipe.course">{{ course }}</span>
+        <p>
+            <span ngClass="badge badge-secondary tag" *ngFor="let course of recipe.course">{{ course }}</span>
         </p>
         <small>{{ recipe.time / 60 }} minutes</small>
     </div>

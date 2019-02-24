@@ -1,9 +1,9 @@
-<header [ngClass]="'main-header jumbotron mb-0'">
-    <a routerLink="" [ngClass]="'header-link'">
+<header ngClass="main-header jumbotron mb-0">
+    <a routerLink="" ngClass="header-link">
         <h1>{{ appName }}</h1>
     </a>
 </header>
 <app-navbar></app-navbar>
-<main [ngClass]="'container'">
+<main ngClass="container">
     <router-outlet></router-outlet>
 </main>

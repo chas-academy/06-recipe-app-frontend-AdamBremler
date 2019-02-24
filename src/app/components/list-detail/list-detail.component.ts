@@ -33,4 +33,15 @@ export class ListDetailComponent implements OnInit {
         });
     }
 
+    deleteRecipe(id: string) {
+        this.list.recipes = this.list.recipes.filter((recipe: string) => recipe !== id);
+        this.recipes = this.recipes.filter((recipe: Recipe) => recipe.id !== id);
+
+        this.listService.updateList(this.list).subscribe((data: any) => {
+            if(!data.success) {
+                alert('Could not delete recipe');
+            }
+        })
+    }
+
 }

@@ -6,15 +6,14 @@ import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss']
+    selector: 'app-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.scss']
 })
-export class LoginComponent implements OnInit {
-    loginForm: FormGroup;
+export class RegisterComponent implements OnInit {
+    registerForm: FormGroup;
     loading = false;
     submitted = false;
-    returnUrl: string;
     error = '';
 
     constructor(
@@ -25,37 +24,37 @@ export class LoginComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.loginForm = this.formBuilder.group({
+        this.registerForm = this.formBuilder.group({
+            name: ['', Validators.required],
             email: ['', Validators.required],
             password: ['', Validators.required]
         });
 
         // Log out if logged in
         this.authenticationService.logout();
-
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
     // Getter for easy access from template
-    get f() { return this.loginForm.controls; }
+    get f() { return this.registerForm.controls; }
 
     onSubmit() {
         this.submitted = true;
 
-        if (this.loginForm.invalid) {
+        if (this.registerForm.invalid) {
             return;
         }
 
         this.loading = true;
-        this.authenticationService.login(this.f.email.value, this.f.password.value)
+        this.authenticationService.register(this.f.name.value, this.f.email.value, this.f.password.value)
             .pipe(first())
             .subscribe(
                 data => {
-                    this.router.navigate([this.returnUrl]);
+                    this.router.navigate(['/']);
                 },
                 error => {
                     this.error = error;
                     this.loading = false;
                 });
     }
+
 }

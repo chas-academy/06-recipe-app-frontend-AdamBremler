@@ -1,10 +1,11 @@
 <article *ngIf="list && recipes && list.recipes.length === recipes.length">
     <h2 ngClass="text-center">{{ list.name }}</h2>
-    <div [ngClass]="'row justify-content-md-center p-3'">
-        <div [ngClass]="'list-group col-12 col-md-10 col-lg-8 p-0'">
-            <a *ngFor="let recipe of recipes" [routerLink]="['/recipes', recipe.id]" [ngClass]="'list-group-item list-group-item-action'">
-                <app-recipe-list-item [recipe]="recipe"></app-recipe-list-item>
-            </a>
+    <div ngClass="row justify-content-md-center p-3">
+        <div ngClass="list-group col-12 col-md-10 col-lg-8 p-0">
+            <div *ngFor="let recipe of recipes" ngClass="list-group-item list-group-item-action">
+                <app-recipe-list-item [routerLink]="['/recipes', recipe.id]" ngClass="recipe-item" [recipe]="recipe"></app-recipe-list-item>
+                <button (click)="deleteRecipe(recipe.id)" ngClass="btn btn-danger float-right delete-button">X</button>
+            </div>
         </div>
     </div>
 </article>

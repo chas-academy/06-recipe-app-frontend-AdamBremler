@@ -38,4 +38,16 @@ export class AuthenticationService {
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
     }
+
+    register(name: string, email: string, password: string) {
+        return this.http.post<any>(`${environment.apiUrl}register`, { name, email, password })
+            .pipe(map(user => {
+                if (user.success) {
+                    localStorage.setItem('currentUser', user.token);
+                    this.currentUserSubject.next(user.token);
+                }
+
+                return user;
+        }));
+    }
 }
