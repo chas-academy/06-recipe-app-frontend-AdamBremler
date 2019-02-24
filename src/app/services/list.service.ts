@@ -33,4 +33,8 @@ export class ListService {
             return this.getListFromObj(obj);
         }));
     }
+
+    createList(name: string) {
+        return this.http.post(`${this.baseUrl}lists`, { name });
+    }
 }

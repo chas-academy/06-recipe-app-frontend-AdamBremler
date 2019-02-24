@@ -17,6 +17,6 @@ export class RecipeService {
     }
 
     getRecipe(id: string) {
-        return this.http.get(`${this.baseUrl}recipe/${id}`);
+        return this.http.get(`${this.baseUrl}recipe/${id}?${this.idAndKey}`);
     }
 }

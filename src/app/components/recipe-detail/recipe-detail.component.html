@@ -13,13 +13,15 @@
             </ul>
         </section>
         <section [ngClass]="'col-12 col-md-6'">
-            <h4 [ngClass]="'sub-title'">Flavors</h4>
-            <ul [ngClass]="'list-group list-group-flush'">
-                <li *ngFor="let flavor of flavorKeys" [ngClass]="'list-group-item'">
-                    <h5 [ngClass]="'inline-title small-title'">{{ flavor }}:</h5>
-                    {{ recipe.flavors[flavor] * 100 | number:'1.0-0' }} %
-                </li>
-            </ul>
+            <div *ngIf="(recipe.flavors | json) != '{}'">
+                <h4 [ngClass]="'sub-title'">Flavors</h4>
+                <ul [ngClass]="'list-group list-group-flush'">
+                    <li *ngFor="let flavor of flavorKeys" [ngClass]="'list-group-item'">
+                        <h5 [ngClass]="'inline-title small-title'">{{ flavor }}:</h5>
+                        {{ recipe.flavors[flavor] * 100 | number:'1.0-0' }} %
+                    </li>
+                </ul>
+            </div>
         </section>
         <section [ngClass]="'col-12 col-md-6 misc-section'">
             <h4 [ngClass]="'sub-title inline-title col-12'">
