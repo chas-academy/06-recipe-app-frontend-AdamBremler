@@ -16,11 +16,21 @@ export class ListService {
 
     constructor(private http: HttpClient) {}
 
+    private getListFromObj(obj) {
+        return new List(obj.id, obj.name, obj.recipes);
+    }
+
     getLists() {
         return this.http.get(`${this.baseUrl}lists`).pipe(map((data: any[]) => {
             return data.map(obj => {
-                return new List(obj.name, obj.recipes);
+                return this.getListFromObj(obj);
             });
+        }));
+    }
+
+    getList(id: number) {
+        return this.http.get(`${this.baseUrl}lists/${id}`).pipe(map((obj: any) => {
+            return this.getListFromObj(obj);
         }));
     }
 }

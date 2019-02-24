@@ -5,6 +5,8 @@ import { RecipeListComponent } from './components/recipe-list/recipe-list.compon
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ListListComponent } from './components/list-list/list-list.component';
+import { ListListItemComponent } from './components/list-list-item/list-list-item.component';
+import { ListDetailComponent } from './components/list-detail/list-detail.component';
 
 const routes: Routes = [
     // Public routes
@@ -15,6 +17,7 @@ const routes: Routes = [
 
     // Guarded routes
     { path: 'lists', component: ListListComponent, canActivate: [AuthGuard] },
+    { path: 'lists/:id', component: ListDetailComponent, canActivate: [AuthGuard] },
 
     // Route not found
     { path: '**', redirectTo: '/' }
