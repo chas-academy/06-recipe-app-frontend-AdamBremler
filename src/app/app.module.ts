@@ -17,6 +17,7 @@ import { ListListComponent } from './components/list-list/list-list.component';
 import { ListListItemComponent } from './components/list-list-item/list-list-item.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ListDetailComponent } from './components/list-detail/list-detail.component';
+import { ListAdderComponent } from './components/list-adder/list-adder.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import { ListDetailComponent } from './components/list-detail/list-detail.compon
         ListListComponent,
         ListListItemComponent,
         NavbarComponent,
-        ListDetailComponent
+        ListDetailComponent,
+        ListAdderComponent
     ],
     imports: [
         BrowserModule,

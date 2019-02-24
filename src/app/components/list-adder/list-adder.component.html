@@ -1,0 +1,7 @@
+<button ngClass="btn btn-success mt-3" (click)="isCollapsed = !isCollapsed">Add to list</button>
+
+<section [ngbCollapse]="isCollapsed">
+    <div ngClass="list-group">
+        <a *ngFor="let list of lists" ngClass="list-group-item list-group-item-action" (click)="addToList(list.id)">{{ list.name }}</a>
+    </div>
+</section>

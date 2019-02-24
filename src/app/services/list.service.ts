@@ -38,6 +38,10 @@ export class ListService {
         return this.http.post(`${this.baseUrl}lists`, { name });
     }
 
+    updateList(list: List) {
+        return this.http.put(`${this.baseUrl}lists/${list.id}`, list);
+    } 
+    
     deleteList(id: number) {
         return this.http.delete(`${this.baseUrl}lists/${id}`);
     }

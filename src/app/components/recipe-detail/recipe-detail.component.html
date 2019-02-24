@@ -30,6 +30,9 @@
             <div [ngClass]="'col-12'">
                 <ngb-rating [rate]="recipe.rating" [ngClass]="'rating'"></ngb-rating>
             </div>
+            <div ngClass="col-12">
+                <app-list-adder [activeRecipe]="recipe"></app-list-adder>
+            </div>
         </section>
     </div>
 </div>
