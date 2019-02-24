@@ -17,7 +17,7 @@
             <ul [ngClass]="'list-group list-group-flush'">
                 <li *ngFor="let flavor of flavorKeys" [ngClass]="'list-group-item'">
                     <h5 [ngClass]="'inline-title small-title'">{{ flavor }}:</h5>
-                    {{ recipe.flavors[flavor] * 100 | number:'1.0-0' }} / 100
+                    {{ recipe.flavors[flavor] * 100 | number:'1.0-0' }} %
                 </li>
             </ul>
         </section>

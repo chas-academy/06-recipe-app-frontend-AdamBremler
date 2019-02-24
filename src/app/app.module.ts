@@ -13,6 +13,8 @@ import { RecipeDetailComponent } from './components/recipe-detail/recipe-detail.
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { LoginComponent } from './components/login/login.component';
+import { ListListComponent } from './components/list-list/list-list.component';
+import { ListListItemComponent } from './components/list-list-item/list-list-item.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +22,9 @@ import { LoginComponent } from './components/login/login.component';
         RecipeListComponent,
         RecipeListItemComponent,
         RecipeDetailComponent,
-        LoginComponent
+        LoginComponent,
+        ListListComponent,
+        ListListItemComponent
     ],
     imports: [
         BrowserModule,
